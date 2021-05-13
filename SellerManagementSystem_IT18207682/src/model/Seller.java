@@ -41,12 +41,14 @@ public class Seller {
 		preparedStmt.setString(6, password);
 		preparedStmt.execute();
 		con.close();
-		output = "Inserted successfully";
+		
+		String newSeller = readSeller();
+		output = "{\"status\":\"success\", \"data\": \"" + newSeller + "\"}";
 		}
 		catch (Exception e)
 		{
-		output = "Error while inserting the seller info.";
-		System.err.println(e.getMessage());
+			output = "{\"status\":\"error\", \"data\":\"Error while inserting the Seller info.\"}";
+			System.err.println(e.getMessage());
 		}
 		return output;
 		}
@@ -124,12 +126,15 @@ public class Seller {
 			
 			preparedStmt.execute();
 			con.close();
-			output = "Updated successfully";
+			
+			String newSeller = readSeller();
+			output = "{\"status\":\"success\", \"data\": \"" +
+			newSeller + "\"}";
 			}
 			catch (Exception e)
 			{
-			output = "Error while updating the seller info.";
-			System.err.println(e.getMessage());
+				output = "{\"status\":\"error\", \"data\":\"Error while updating the Seller info.\"}";
+				System.err.println(e.getMessage());
 			}
 			return output;
 			}
@@ -151,12 +156,15 @@ public class Seller {
 			
 			preparedStmt.execute();
 			con.close();
-			output = "Deleted successfully";
+			
+			String newSeller = readSeller();
+			output = "{\"status\":\"success\", \"data\": \"" +
+			newSeller + "\"}";
 			}
 			catch (Exception e)
 			{
-			output = "Error while deleting the seller info.";
-			System.err.println(e.getMessage());
+				output = "{\"status\":\"error\", \"data\":\"Error while deleting the Seller Info.\"}";
+				System.err.println(e.getMessage());
 			}
 			return output;
 			}

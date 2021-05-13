@@ -41,12 +41,14 @@ public class Product {
 		preparedStmt.setString(5, desc);
 		preparedStmt.execute();
 		con.close();
-		output = "Inserted successfully";
+		
+		String newProduct = readProduct();
+		output = "{\"status\":\"success\", \"data\": \"" + newProduct + "\"}";
 		}
 		catch (Exception e)
 		{
-		output = "Error while inserting the Product.";
-		System.err.println(e.getMessage());
+			output = "{\"status\":\"error\", \"data\":\"Error while inserting the product.\"}";
+			System.err.println(e.getMessage());
 		}
 		return output;
 		}
@@ -120,12 +122,14 @@ public class Product {
 			
 			preparedStmt.execute();
 			con.close();
-			output = "Updated successfully";
+			String newProduct = readProduct();
+			output = "{\"status\":\"success\", \"data\": \"" +
+			newProduct + "\"}";
 			}
 			catch (Exception e)
 			{
-			output = "Error while updating the Product.";
-			System.err.println(e.getMessage());
+				output = "{\"status\":\"error\", \"data\":\"Error while updating the product.\"}";
+				System.err.println(e.getMessage());
 			}
 			return output;
 			}
@@ -147,12 +151,14 @@ public class Product {
 			
 			preparedStmt.execute();
 			con.close();
-			output = "Deleted successfully";
+			String newProduct = readProduct();
+			output = "{\"status\":\"success\", \"data\": \"" +
+			newProduct + "\"}";
 			}
 			catch (Exception e)
 			{
-			output = "Error while deleting the Product.";
-			System.err.println(e.getMessage());
+				output = "{\"status\":\"error\", \"data\":\"Error while deleting the product.\"}";
+				System.err.println(e.getMessage());
 			}
 			return output;
 			}
